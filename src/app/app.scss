@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--card-bg);
+  align-items: center;
+}
+
+button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
