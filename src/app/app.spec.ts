@@ -18,6 +18,19 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ltd-theme-toogle-ng');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Angular 21 Theme Toggle');
+  });
+
+  it('should switch the theme when the button is clicked', async () => {
+    localStorage.clear();
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const button = (fixture.nativeElement as HTMLElement).querySelector('button')!;
+    const before = document.documentElement.getAttribute('data-theme');
+
+    button.click();
+    await fixture.whenStable();
+
+    expect(document.documentElement.getAttribute('data-theme')).not.toBe(before);
   });
 });

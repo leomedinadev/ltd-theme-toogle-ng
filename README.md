@@ -1,59 +1,40 @@
-# LtdThemeToogleNg
+# Angular Theme Toggle
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+Demo mínima de un cambio de tema claro/oscuro en **Angular 21**, hecho con un servicio, un signal y variables CSS, sin librerías de UI.
 
-## Development server
+## Cómo funciona
 
-To start a local development server, run:
+- [`ThemeService`](src/app/services/theme.service.ts) guarda el tema actual en un **signal** y lo aplica como atributo `data-theme` en `<html>`.
+- [`styles.scss`](src/styles.scss) define los colores como **variables CSS** para cada valor de `data-theme`, así que los componentes no necesitan saber qué tema está activo.
+- La elección se guarda en `localStorage`. La primera vez se usa el tema del sistema operativo (`prefers-color-scheme`).
 
-```bash
-ng serve
-```
+## Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 21 (componentes standalone y signals)
+- SCSS
+- Vitest para los tests
 
-## Code scaffolding
+## Cómo ejecutar
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Requiere Node.js 20 o superior.
 
 ```bash
-ng generate --help
+npm install
+npm start
 ```
 
-## Building
+La aplicación queda en `http://localhost:4200`.
 
-To build the project run:
+## Tests
 
 ```bash
-ng build
+npm test
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Cubren el tema inicial (guardado, del sistema o por defecto), el cambio de tema y su persistencia.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Build
 
 ```bash
-ng test
+npm run build
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

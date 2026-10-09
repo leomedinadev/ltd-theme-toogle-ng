@@ -29,7 +29,13 @@ export class ThemeService {
     );
   }
 
+  // Tema guardado por el usuario; si no hay uno válido, el que prefiera el sistema operativo
   private getInitialTheme(): Theme {
-    return (localStorage.getItem(this.storageKey) as Theme) ?? 'light';
+    const saved = localStorage.getItem(this.storageKey);
+    if (saved === 'light' || saved === 'dark') {
+      return saved;
+    }
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
   }
 }
